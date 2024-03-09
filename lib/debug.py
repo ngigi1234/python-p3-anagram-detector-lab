@@ -1,6 +1,12 @@
-#!/usr/bin/env python3
+class Anagram:
+    def __init__(self, word):
+        self.word = word.lower()
 
-from anagram import Anagram
+    def match(self, candidates):
+        return [candidate for candidate in candidates if self.is_anagram(candidate)]
 
-if __name__ == '__main__':
-    import ipdb; ipdb.set_trace()
+    def is_anagram(self, candidate):
+        candidate_lower = candidate.lower()
+        if candidate_lower == self.word:
+            return False  
+        return sorted(candidate_lower) == sorted(self.word)
